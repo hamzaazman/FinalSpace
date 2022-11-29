@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/nav_graph"
+        app:startDestination="@id/characterFragment">
+    <fragment
+            android:id="@+id/characterFragment"
+            android:name="com.hamzaazman.finalspace.ui.character.CharacterFragment"
+            android:label="Character"
+            tools:layout="@layout/fragment_character">
+        <action
+                android:id="@+id/action_characterFragment_to_characterDetailFragment"
+                app:destination="@id/characterDetailFragment"
+                app:enterAnim="@anim/open_component_from_right"
+                app:exitAnim="@anim/close_component_from_left"
+                app:popEnterAnim="@anim/open_component_from_left"
+                app:popExitAnim="@anim/close_component_from_right" />
+    </fragment>
+    <fragment
+            android:id="@+id/characterDetailFragment"
+            android:name="com.hamzaazman.finalspace.ui.character.CharacterDetailFragment"
+            android:label="Character Detail"
+            tools:layout="@layout/fragment_character_detail">
+        <action
+                android:id="@+id/action_characterDetailFragment_to_characterFragment"
+                app:destination="@id/characterFragment" />
+        <argument
+                android:name="character"
+                app:argType="com.hamzaazman.finalspace.model.Character" />
+    </fragment>
+
+    <fragment
+            android:id="@+id/locationFragment"
+            android:name="com.hamzaazman.finalspace.ui.location.LocationFragment"
+            android:label="Location"
+            tools:layout="@layout/fragment_location">
+        <action
+                android:id="@+id/action_locationFragment_to_locationDetailFragment"
+                app:destination="@id/locationDetailFragment"
+                app:enterAnim="@anim/open_component_from_right"
+                app:exitAnim="@anim/close_component_from_left"
+                app:popEnterAnim="@anim/open_component_from_left"
+                app:popExitAnim="@anim/close_component_from_right" />
+    </fragment>
+    <fragment
+            android:id="@+id/locationDetailFragment"
+            android:name="com.hamzaazman.finalspace.ui.location.LocationDetailFragment"
+            android:label="Location Detail"
+            tools:layout="@layout/fragment_location_detail">
+        <argument
+                android:name="location"
+                app:argType="com.hamzaazman.finalspace.model.Location" />
+        <action
+                android:id="@+id/action_locationDetailFragment_to_locationFragment"
+                app:destination="@id/locationFragment" />
+        <action
+                android:id="@+id/action_locationDetailFragment_to_characterBottomSheetFragment"
+                app:destination="@id/characterBottomSheetFragment" />
+    </fragment>
+
+    <dialog
+            android:id="@+id/characterBottomSheetFragment"
+            android:name="com.hamzaazman.finalspace.ui.location.bottomsheet.CharacterBottomSheetFragment"
+            android:label="CharacterBottomSheetFragment">
+        <argument
+                android:name="character"
+                app:argType="com.hamzaazman.finalspace.model.Character" />
+    </dialog>
+    <fragment
+            android:id="@+id/episodeFragment"
+            android:name="com.hamzaazman.finalspace.ui.episode.EpisodeFragment"
+            android:label="Episode"
+            tools:layout="@layout/fragment_episode">
+        <action
+                android:id="@+id/action_episodeFragment_to_episodeDetailFragment"
+                app:destination="@id/episodeDetailFragment"
+                app:enterAnim="@anim/open_component_from_right"
+                app:exitAnim="@anim/close_component_from_left"
+                app:popEnterAnim="@anim/open_component_from_left"
+                app:popExitAnim="@anim/close_component_from_right" />
+    </fragment>
+    <fragment
+            android:id="@+id/episodeDetailFragment"
+            android:name="com.hamzaazman.finalspace.ui.episode.EpisodeDetailFragment"
+            android:label="Episode Detail"
+            tools:layout="@layout/fragment_episode_detail">
+        <action
+                android:id="@+id/action_episodeDetailFragment_to_episodeFragment"
+                app:destination="@id/episodeFragment" />
+        <argument
+                android:name="episode"
+                app:argType="com.hamzaazman.finalspace.model.Episode" />
+    </fragment>
+    <fragment
+            android:id="@+id/quoteFragment"
+            android:name="com.hamzaazman.finalspace.ui.quote.QuoteFragment"
+            android:label="Quote"
+            tools:layout="@layout/fragment_quote" />
+</navigation>

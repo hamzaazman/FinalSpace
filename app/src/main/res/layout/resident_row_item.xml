@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:orientation="vertical"
+        android:elevation="16dp"
+        android:paddingHorizontal="16dp"
+        android:paddingVertical="8dp"
+        android:clickable="true">
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/residentCharacterImage"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                app:shapeAppearance="@style/ShapeAppearance.Material3.Corner.Small"
+                android:layout_marginEnd="8dp"
+                android:src="@mipmap/ic_launcher" />
+
+        <TextView
+                android:id="@+id/residentCharacterName"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:gravity="center_vertical"
+                android:ellipsize="end"
+                android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
+                tools:text="Name" />
+
+    </LinearLayout>
+
+</LinearLayout>
+

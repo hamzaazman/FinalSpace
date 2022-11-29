@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="8dp"
+        tools:context=".ui.location.LocationFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        <com.google.android.material.imageview.ShapeableImageView
+                android:layout_width="match_parent"
+                android:layout_height="280dp"
+                android:src="@mipmap/ic_launcher"
+                android:scaleType="fitXY"
+                app:shapeAppearance="@style/ShapeAppearance.Material3.Corner.Medium"
+                android:layout_marginVertical="8dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:id="@+id/locationDetailImage" />
+
+        <TextView
+                android:id="@+id/infoTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="About"
+                android:textAppearance="@style/TextAppearance.Material3.TitleMedium"
+                android:layout_marginTop="16dp"
+                app:layout_constraintTop_toBottomOf="@+id/locationDetailImage"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+        <!--ABOUT-->
+        <com.google.android.material.card.MaterialCardView
+                style="@style/Widget.Material3.CardView.Elevated"
+                android:id="@+id/aboutCardView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                app:cardCornerRadius="4dp"
+                app:cardPreventCornerOverlap="true"
+                app:layout_constraintTop_toBottomOf="@+id/infoTextView"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent">
+
+            <LinearLayout
+                    android:orientation="vertical"
+                    android:paddingHorizontal="16dp"
+                    android:paddingVertical="16dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                <!--NAME-->
+                <LinearLayout
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                    <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:textStyle="bold"
+                            android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
+                            android:text="Name" />
+
+                    <TextView
+                            android:id="@+id/locationDetailName"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="2"
+                            android:textAlignment="textEnd"
+                            android:ellipsize="end"
+                            android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
+                            tools:text="Name" />
+                </LinearLayout>
+
+                <!--LINE-->
+                <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:alpha="0.2"
+                        android:layout_marginVertical="8dp"
+                        android:background="@color/shimmer_placeholder" />
+
+                <!--STATUS-->
+                <LinearLayout
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                    <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:textStyle="bold"
+                            android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
+                            android:text="Type" />
+
+                    <TextView
+                            android:id="@+id/locationDetailType"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="2"
+                            android:textAlignment="textEnd"
+                            android:ellipsize="end"
+                            android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
+                            tools:text="Planet" />
+                </LinearLayout>
+
+
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+
+        <TextView
+                android:id="@+id/infoCharacter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Character"
+                android:textAppearance="@style/TextAppearance.Material3.TitleMedium"
+                android:layout_marginTop="16dp"
+                app:layout_constraintTop_toBottomOf="@+id/aboutCardView"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+        <!--CHARACTER-->
+        <com.google.android.material.card.MaterialCardView
+                style="@style/Widget.Material3.CardView.Elevated"
+                android:id="@+id/characterCardView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:elevation="16dp"
+                app:cardCornerRadius="4dp"
+                app:layout_constraintTop_toBottomOf="@+id/infoCharacter"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent">
+
+            <com.google.android.material.progressindicator.LinearProgressIndicator
+                    android:id="@+id/linearProgressBar"
+                    android:indeterminate="true"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+
+            <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/residentChacterRv"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:paddingVertical="4dp"
+                    tools:itemCount="3"
+                    tools:listitem="@layout/resident_row_item" />
+        </com.google.android.material.card.MaterialCardView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.core.widget.NestedScrollView>
