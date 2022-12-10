@@ -3,6 +3,8 @@ package com.hamzaazman.finalspace.ui.location
 import android.net.Uri
 import android.os.Bundle
 import android.view.View
+import android.view.View.GONE
+import android.view.View.VISIBLE
 import android.widget.Toast
 import androidx.core.view.isGone
 import androidx.core.view.isVisible
@@ -18,7 +20,6 @@ import com.hamzaazman.finalspace.databinding.FragmentLocationDetailBinding
 import com.hamzaazman.finalspace.model.Character
 import com.hamzaazman.finalspace.ui.character.viewmodel.CharacterViewModel
 import com.hamzaazman.finalspace.ui.location.adapter.ResidentAdapter
-import com.hamzaazman.finalspace.ui.location.viewmodel.LocationDetailViewModel
 import com.hamzaazman.finalspace.util.Resource
 import com.hamzaazman.finalspace.util.viewBinding
 import dagger.hilt.android.AndroidEntryPoint
@@ -33,7 +34,6 @@ class LocationDetailFragment : Fragment(R.layout.fragment_location_detail),
     private val args: LocationDetailFragmentArgs by navArgs()
     private lateinit var residentAdapter: ResidentAdapter
     private val characterViewModel: CharacterViewModel by viewModels()
-    private val locationDetailViewModel: LocationDetailViewModel by viewModels()
     private var tempList: ArrayList<Character> = ArrayList()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -44,7 +44,7 @@ class LocationDetailFragment : Fragment(R.layout.fragment_location_detail),
             locationDetailName.text = location.name
             locationDetailType.text = location.type
 
-            if (location.notable_residents!!.isEmpty()) {
+            if (location.notable_residents.isNullOrEmpty()) {
                 infoCharacter.isGone = true
                 characterCardView.isGone = true
             } else {
@@ -83,18 +83,14 @@ class LocationDetailFragment : Fragment(R.layout.fragment_location_detail),
                     }
                     is Resource.Loading -> {
                         characterCardView.isGone = true
-                        residentChacterRv.isGone = true
-                        linearProgressBar.isVisible = true
+                      //  linearProgressBar.isVisible = true
                     }
                     is Resource.Success -> {
-                        residentChacterRv.isVisible = true
                         characterCardView.isVisible = true
-                        linearProgressBar.isGone = true
+                        //linearProgressBar.isGone = true
                         resource.data.let { listCharacter ->
 
-                            location.notable_residents.forEach { url ->
-                                locationDetailViewModel.getCharactersByLocation(url)
-
+                            location.notable_residents?.forEach { url ->
                                 val myUrl = Uri.parse(url)
 
                                 val filteredCharacter = listCharacter?.filter { character ->
@@ -104,6 +100,8 @@ class LocationDetailFragment : Fragment(R.layout.fragment_location_detail),
                                 filteredCharacter?.forEach {
                                     tempList.add(it)
                                 }
+
+                                residentChacterRv.isVisible = tempList.isNotEmpty()
                                 residentAdapter.differ.submitList(tempList)
                             }
                         }

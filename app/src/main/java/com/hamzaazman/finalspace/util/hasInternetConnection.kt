@@ -4,6 +4,11 @@ import android.app.Application
 import android.content.Context
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
+import android.view.View
+import android.view.View.OnClickListener
+import com.google.android.material.snackbar.Snackbar
+import com.hamzaazman.finalspace.util.Constant.CHECK_NETWORK_ACTION
+import com.hamzaazman.finalspace.util.Constant.CHECK_NETWORK_WARNING
 import dagger.hilt.android.internal.Contexts.getApplication
 
 fun hasInternetConnection(application: Application): Boolean {
@@ -18,3 +23,13 @@ fun hasInternetConnection(application: Application): Boolean {
         else -> false
     }
 }
+
+fun connectivitySnackBar(
+    view: View,
+    action: OnClickListener
+) =
+    Snackbar.make(
+        view,
+        CHECK_NETWORK_WARNING,
+        Snackbar.LENGTH_INDEFINITE
+    ).setAction(CHECK_NETWORK_ACTION, action)
