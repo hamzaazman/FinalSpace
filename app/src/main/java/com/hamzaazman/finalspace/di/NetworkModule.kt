@@ -1,12 +1,16 @@
 package com.hamzaazman.finalspace.di
 
+import android.content.Context
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
+import com.hamzaazman.finalspace.data.network.ConnectivityObserver
 import com.hamzaazman.finalspace.data.network.SpaceApi
 import com.hamzaazman.finalspace.util.Constant.BASE_URL
+import com.hamzaazman.finalspace.util.NetworkConnectivityObserver
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
+import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
@@ -52,4 +56,13 @@ object NetworkModule {
     fun provideService(retrofit: Retrofit): SpaceApi {
         return retrofit.create(SpaceApi::class.java)
     }
+
+
+    @Provides
+    @Singleton
+    fun provideConnectivityObserver(
+        @ApplicationContext appContext: Context
+    ): ConnectivityObserver = NetworkConnectivityObserver(appContext)
+
+
 }

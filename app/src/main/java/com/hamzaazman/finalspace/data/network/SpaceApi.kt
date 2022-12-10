@@ -10,19 +10,19 @@ import retrofit2.http.Url
 
 interface SpaceApi {
     @GET("character/")
-    suspend fun getAllCharacters(): Response<List<Character>>
+    suspend fun getAllCharacters(): List<Character>
 
     @GET("episode/")
-    suspend fun getAllEpisode(): Response<List<Episode>>
+    suspend fun getAllEpisode(): List<Episode>
 
     @GET("location/")
-    suspend fun getAllLocations(): Response<List<Location>>
+    suspend fun getAllLocations(): List<Location>
 
     @GET
     suspend fun getCharacterByLocation(
         @Url url: String
-    ): Response<Character>
+    ): Character
 
     @GET("quote/")
-    suspend fun getAllQuote(): Response<List<Quote>>
+    suspend fun getAllQuote(): List<Quote>
 }

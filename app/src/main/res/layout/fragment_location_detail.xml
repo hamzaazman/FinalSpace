@@ -142,20 +142,16 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent">
 
-            <com.google.android.material.progressindicator.LinearProgressIndicator
-                    android:id="@+id/linearProgressBar"
-                    android:indeterminate="true"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
-
-
             <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/residentChacterRv"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:paddingVertical="4dp"
+                    android:visibility="gone"
                     tools:itemCount="3"
                     tools:listitem="@layout/resident_row_item" />
+
+
         </com.google.android.material.card.MaterialCardView>
 
     </androidx.constraintlayout.widget.ConstraintLayout>

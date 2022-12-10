@@ -8,7 +8,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class QuoteViewModel @Inject constructor(
-    private val quoteRepository: QuoteRepository
+    quoteRepository: QuoteRepository
 ) : ViewModel() {
 
     val quotes = quoteRepository.getAllQuote().asLiveData()
